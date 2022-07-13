@@ -2,7 +2,7 @@ import {
   assertEquals,
   AssertionError,
 } from "https://deno.land/std@0.120.0/testing/asserts.ts";
-import { FNV } from "./mod.ts";
+import { FNV } from "./FNV.ts";
 
 Deno.test("hash", () => {
   assertEquals(FNV.update("hello world").digest("hex"), "779a65e7023cd2e7");
