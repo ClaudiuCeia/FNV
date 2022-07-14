@@ -2,7 +2,7 @@ import {
   assertEquals,
   AssertionError,
 } from "https://deno.land/std@0.120.0/testing/asserts.ts";
-import { FNV } from "./FNV.ts";
+import { FNV } from "../src/FNV.ts";
 
 Deno.test("hash", () => {
   assertEquals(FNV.update("hello world").digest("hex"), "779a65e7023cd2e7");
@@ -17,11 +17,20 @@ Deno.test("bigint", () => {
 });
 
 Deno.test("compress", () => {
-  assertEquals(FNV.compress(4, FNV.update("hello world").value()), 9n);
-  assertEquals(FNV.compress(8, FNV.update("hello world").value()), 53n);
-  assertEquals(FNV.compress(10, FNV.update("hello world").value()), 467n);
-  assertEquals(FNV.compress(12, FNV.update("hello world").value()), 298n);
-  assertEquals(FNV.compress(15, FNV.update("hello world").value()), 22174n);
+  assertEquals(FNV.compress(4, FNV.update("hello world").value()).value(), 9n);
+  assertEquals(FNV.compress(8, FNV.update("hello world").value()).value(), 53n);
+  assertEquals(
+    FNV.compress(10, FNV.update("hello world").value()).value(),
+    467n
+  );
+  assertEquals(
+    FNV.compress(12, FNV.update("hello world").value()).value(),
+    298n
+  );
+  assertEquals(
+    FNV.compress(15, FNV.update("hello world").value()).value(),
+    22174n
+  );
 });
 
 /**

@@ -4,7 +4,7 @@ import { Buffer } from "https://deno.land/std@0.134.0/node/buffer.ts";
 type FNVCompressTarget = Range<1, 16>;
 
 /**
- * An implementation of the 32 bit FNV-1a algorithm
+ * An implementation of the 64 bit FNV-1a algorithm
  * http://www.isthe.com/chongo/tech/comp/fnv/
  */
 export class FNV {
@@ -31,9 +31,9 @@ export class FNV {
     return buffer.toString(encoding);
   }
 
-  public static compress(size: FNVCompressTarget, value: bigint): bigint {
+  public static compress(size: FNVCompressTarget, value: bigint): FNV {
     const mask = (1 << size) - 1;
-    return ((value >> BigInt(size)) ^ value) & BigInt(mask);
+    return new FNV(((value >> BigInt(size)) ^ value) & BigInt(mask));
   }
 
   public value(): bigint {

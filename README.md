@@ -1,6 +1,6 @@
 # FNV
 
-An implementation of the [32 bit FNV-1a algorithm](http://www.isthe.com/chongo/tech/comp/fnv/).
+An implementation of the [64 bit FNV-1a algorithm](http://www.isthe.com/chongo/tech/comp/fnv/).
 
 ## Example
 ```ts
